@@ -1,11 +1,14 @@
 import { useState } from "react";
 
 function InputCom() {
-    const [inputValue, setInputValue] = useState('test here');
+    const [inputValue, setInputValue] = useState('hello');
     const inputData = (event) => {
-        setInputValue(event.target.value);
+    
+              setInputValue(event.target.value);
+              
     }
-  return <> <p> valye is : </p>{ inputValue }
+  return <> 
+  <p> value is : </p>{ inputValue }
   <input onChange = {($event)=> inputData($event)}
   value={inputValue}
   style={{ transform: 'translate(200px,20px)' }} type="input" /> </>;
