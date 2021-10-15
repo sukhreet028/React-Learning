@@ -1,3 +1,12 @@
+.head1{
+    width: 80%;
+    margin: auto;
+    margin-top: 50px !important;
+}
+.head1 h1{
+    text-align: center;
+    color: cadetblue;
+}
 .main-nav{
     /* background: aliceblue; */
     width: 70%;
@@ -26,6 +35,38 @@
 }
 
 .small-nav li a{
+    text-decoration: none;
+    color:rgb(88, 16, 16);
+    font-size: 15px;
+}
+.hello{
+    /* background: aliceblue; */
+    width: 70%;
+    margin: auto;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.hello li a{
+    text-decoration: none;
+    color:mediumseagreen;
+    font-size: 20px;
+}
+
+.bye {
+    /* background: aliceblue; */
+    width: 70%;
+    margin: auto;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bye li a{
     text-decoration: none;
     color:rgb(88, 16, 16);
     font-size: 15px;
