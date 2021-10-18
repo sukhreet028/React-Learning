@@ -66,6 +66,8 @@ function Cal() {
         setResult(keys);
       }
     }
+ 
+
   };
 
   const clearFunction = () => {
@@ -74,8 +76,8 @@ function Cal() {
   };
 
   return (
-    <div className="container">
-      <Input1 result={result} />
+    <div className="layout">
+      <Input1 result={result}/>
       {buttonArray.map((data) => (
         <Buttons
           key={data}
@@ -85,11 +87,14 @@ function Cal() {
           func={() => sumData(data)}
         />
       ))}
+      
+      <Buttons
+        buttonType="button" name="+" classStyle="cal-button sum" func={() => sumData('+')}/>
       <Buttons
         buttonType="button"
-        name="="
-        classStyle="cal-button"
-        func={() => sumData('=')}
+        name="-"
+        classStyle="cal-button min"
+        func={() => sumData('-')}
       />
       {operatorArray.map((data, index) => (
         <Buttons
@@ -108,7 +113,13 @@ function Cal() {
         classStyle="cal-button"
         func={() => clearFunction()}
       />
-    </div>
+       <Buttons
+        buttonType="button"
+        name="CLEAR"
+        classStyle="cal-button clear"
+        func={() => sumData('C')}
+      />
+      </div>
   );
-}
-export default Cal;
+      }
+    export default Cal;
