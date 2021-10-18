@@ -1,18 +1,100 @@
-body{
-    background-color:rgb(245, 199, 199);
+*{
+    font-size: 28px;
+    overflow: hidden;
 }
-.container{
-    width: 250px;
-    margin: 250px auto;
+.layout{
+    width: 399px;
+    margin: 170px auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows: 65px;
+    background-color: #b1b5b785;
+    border-radius: 14px;
+    align-items: center;
+    justify-items: center;
+    /* transition: ease-in-out;
+    transform: scaleX(-20deg); */
+    transition: all 0.5s ease-in-out;
 }
+
 .inputClass{
- height: 40px;
- width: 240px;
- text-align: right;
- font-size: 20px;
+    text-align: right;
+    grid-column: 1/5;
+    border: none;
+    /* border: 1px solid gray; */
+    height: 48px;
+    border-radius: 13px;
+    width: 390px;
 }
 .cal-button{
-    height: 60px;
-    width: 62px;
-    font-size: 20px;
+    background: white;
+    color:black;
+    border: none;
+    height: 55px;
+    width: 95px;
+    border-radius: 13px;
+    box-shadow: 2px 2px 0px 0px #c5c2c2;
+    text-align: center;
 }
+.cal-button:hover{
+    transition: 1s;
+    transform: scale(1.1);
+    /* background-color: rgb(238, 227, 227); */
+}
+.sum{
+    grid-column: 4/5;
+    grid-row: 2/3;
+    /* background-color: aquamarine; */
+}
+.min{
+    grid-column: 4/5;
+    grid-row: 3/4;
+}
+.mul{
+    grid-column: 4/5;
+    grid-row: 4/5;
+    padding-top: 14px;
+}
+.div{
+    grid-column: 4/5;
+    grid-row: 5/6;
+}
+/* .clear{
+    grid-column: 1/5;
+    grid-row: 6/7;
+    font-size: 20px !important;
+    width: 100px;
+} */
+.clear{
+text-align:center;
+grid-column: 1/5;
+border: none;
+/* border: 1px solid gray; */
+height: 48px;
+border-radius: 13px;
+width: 360px;
+font-size: 20px !important;
+}
+.cal1-button{
+    background: rgb(7, 7, 7);
+    color:rgb(170, 41, 41);
+    border: none;
+    height: 55px;
+    width: 95px;
+    border-radius: 13px;
+    box-shadow: 2px 2px 0px 0px #c5c2c2;
+    text-align: center;
+}
+.input1Class{
+    text-align: right;
+    grid-column: 1/5;
+    border: none;
+    border: 1px solid gray;
+    height: 48px;
+    border-radius: 13px;
+    width: 390px;
+}
+
+/* .cal-button{
+    font-size: 20px;
+} */

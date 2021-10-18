@@ -12,7 +12,7 @@ function InputCom(props) {
       <input
         onChange={($event) => inputData($event)}
         value={result}
-        className="inputClass"
+        className="input1Class"
         type="input"
       />{' '}
     </>
