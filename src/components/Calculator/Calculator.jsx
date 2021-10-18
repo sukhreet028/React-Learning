@@ -1,59 +1,78 @@
 import './Cal.css';
 import Input1 from '../input1-com/Input1';
 import Buttons from '../buttons/buttons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Cal() {
   const [result, setResult] = useState(0);
   const [operator, setOperator] = useState();
-  const buttonArray = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, '.'];
-  const operatorArray = ['+', '-', '*', '/', '%'];
-  const [first, setFirst] = useState([]);
+  const buttonArray = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+  const operatorArray = ['+', '-', '*', '/'];
+  const [inputValues, setInputValues] = useState([]);
   const [storeFirstValue, setStoreFirstValue] = useState();
-  let sum, min, div, mul;
+  const [buttonId, setButtonId] = useState(null);
+  let sum;
 
-  const sumData = (value) => {
+  const calcuFunction = (secondValue) => {
+    if (operator === '+') {
+      sum = (storeFirstValue ? storeFirstValue : 0) + secondValue;
+    } else if (operator === '-') {
+      sum = (storeFirstValue ? storeFirstValue : 0) - secondValue;
+    } else if (operator === '*') {
+      sum = (storeFirstValue ? storeFirstValue : 0) * secondValue;
+    } else if (operator === '/') {
+      sum = (storeFirstValue ? storeFirstValue : 0) / secondValue;
+    } 
+  }
+
+  const sumData = (value, id) => {
+
+    // if we are not using = button and continue with the other operator buttons
     if (operator && operatorArray.includes(value)) {
-      if (operator === '+') {
-        // let storeSecondValue = parseInt(first.join(''));
-        sum = (storeFirstValue ? storeFirstValue : 0) + result;
-      } else if (operator === '-') {
-        sum = (storeFirstValue ? storeFirstValue : 0) - result;
-      }
+      setButtonId(id);
+      calcuFunction(result);
 
       setStoreFirstValue(sum);
-      console.log('iside minus ' + storeFirstValue, result, value);
-      setFirst([]);
+      setInputValues([]);
       setResult(sum);
       setOperator(value);
-    } else if (value === '=') {
-      let storeSecondValue = parseInt(first.join(''));
-      if (operator === '+') {
-        sum = (storeFirstValue ? storeFirstValue : 0) + storeSecondValue;
-      } else if (operator === '-') {
-        sum = (storeFirstValue ? storeFirstValue : 0) - storeSecondValue;
-      }
-
-      console.log('sum func' + storeFirstValue, storeSecondValue);
+    } 
+    // we are using to show the calculation result and this block of code is only gonna work if we have the value of operator
+    else if (value === '=' && operator) {
+      let storeSecondValue = parseInt(inputValues.join(''));
+        if (storeSecondValue) {
+          calcuFunction(storeSecondValue);
+        } else {
+          calcuFunction(0);
+        }
       setResult(sum);
       setOperator(null);
       setStoreFirstValue(sum);
-      console.log(sum);
-      setFirst([]);
+      setInputValues(sum.toString().split(','));
     } else if (operatorArray.includes(value) && !operator) {
+      setButtonId(id);
       setOperator(value);
-      if (first.length > 0) {
-        setStoreFirstValue(parseInt(first.join('')));
+      if (inputValues.length > 0) {
+        setStoreFirstValue(parseInt(inputValues.join('')));
       }
-      console.log('first' + storeFirstValue);
-      setFirst([]);
+      setInputValues([]);
+
     } else {
-      first.push(value);
-      setFirst((prev) => [...prev]);
-      let keys = parseInt(first.join(''));
-      setResult(keys);
+      if (buttonArray.includes(value)) {
+        setButtonId(null);
+        inputValues.push(value);
+        setInputValues((prev) => [...prev]);
+        let keys = parseInt(inputValues.join(''));
+        setResult(keys);
+      }
     }
   };
+
+  const clearFunction = () => {
+    setInputValues([]);
+    setResult(0);
+  };
+
   return (
     <div className="container">
       <Input1 result={result} />
@@ -72,35 +91,22 @@ function Cal() {
         classStyle="cal-button"
         func={() => sumData('=')}
       />
-      <Buttons
-        buttonType="button"
-        name="+"
-        classStyle="cal-button"
-        func={() => sumData('+')}
-      />
-      <Buttons
-        buttonType="button"
-        name="-"
-        classStyle="cal-button"
-        func={() => sumData('-')}
-      />
-      <Buttons
-        buttonType="button"
-        name="*"
-        classStyle="cal-button"
-        func={() => sumData('*')}
-      />
-      {/* <Buttons
+      {operatorArray.map((data, index) => (
+        <Buttons
+          key={index}
+          id={index}
           buttonType="button"
-          name="="
+          name={data}
           classStyle="cal-button"
-          func={()=>divData('div')}
-        /> */}
+          buttonId={buttonId}
+          func={() => sumData(data, index)}
+        />
+      ))}
       <Buttons
         buttonType="button"
-        name="/"
+        name="C"
         classStyle="cal-button"
-        func={() => sumData('/')}
+        func={() => clearFunction()}
       />
     </div>
   );
