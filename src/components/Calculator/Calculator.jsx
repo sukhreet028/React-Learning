@@ -89,13 +89,7 @@ function Cal() {
       ))}
       
       <Buttons
-        buttonType="button" name="+" classStyle="cal-button sum" func={() => sumData('+')}/>
-      <Buttons
-        buttonType="button"
-        name="-"
-        classStyle="cal-button min"
-        func={() => sumData('-')}
-      />
+        buttonType="button" name="=" classStyle="cal-button sum" func={() => sumData('=')}/>
       {operatorArray.map((data, index) => (
         <Buttons
           key={index}
@@ -112,12 +106,6 @@ function Cal() {
         name="C"
         classStyle="cal-button"
         func={() => clearFunction()}
-      />
-       <Buttons
-        buttonType="button"
-        name="CLEAR"
-        classStyle="cal-button clear"
-        func={() => sumData('C')}
       />
       </div>
   );
