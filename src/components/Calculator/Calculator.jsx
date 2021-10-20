@@ -82,7 +82,8 @@ function Cal() {
        setResult(deleteValue1);
     //    setStoreFirstValue(result);
 
-    //    const oneDigitLess = deleteValue1.toString().concat(inputValues).split(',');
+       const oneDigitLess = deleteValue1.toString().concat(' ',inputValues).split(',');
+       setInputValues(oneDigitLess);
    };
    
 
