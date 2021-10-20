@@ -81,10 +81,8 @@ function Cal() {
         const deleteValue1 =deleteValue.split(',');
        setResult(deleteValue1);
     //    setStoreFirstValue(result);
-    //    setOperator();
 
     //    const oneDigitLess = deleteValue1.toString().concat(inputValues).split(',');
-       setInputValues(sum);
    };
    
 
