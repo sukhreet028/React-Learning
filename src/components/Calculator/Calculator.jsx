@@ -1,18 +1,17 @@
 import './Cal.css';
 import Input1 from '../input1-com/Input1';
 import Buttons from '../buttons/buttons';
-import {useEffect ,useState } from 'react';
+import { useState } from 'react';
 
 function Cal() {
   const [result, setResult] = useState(0);
   const [operator, setOperator] = useState();
   const buttonArray = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
-  const operatorArray = ['+', '-', '*', '/',];
+  const operatorArray = ['+', '-', '*', '/'];
   const [inputValues, setInputValues] = useState([]);
   const [storeFirstValue, setStoreFirstValue] = useState();
   const [buttonId, setButtonId] = useState(null);
   let sum;
-
 
   const calcuFunction = (secondValue) => {
     if (operator === '+') {
@@ -23,11 +22,10 @@ function Cal() {
       sum = (storeFirstValue ? storeFirstValue : 0) * secondValue;
     } else if (operator === '/') {
       sum = (storeFirstValue ? storeFirstValue : 0) / secondValue;
-    } 
-}
+    }
+  };
 
   const sumData = (value, id) => {
-
     // if we are not using = button and continue with the other operator buttons
     if (operator && operatorArray.includes(value)) {
       setButtonId(id);
@@ -37,15 +35,15 @@ function Cal() {
       setInputValues([]);
       setResult(sum);
       setOperator(value);
-    } 
+    }
     // we are using to show the calculation result and this block of code is only gonna work if we have the value of operator
     else if (value === '=' && operator) {
       let storeSecondValue = parseInt(inputValues.join(''));
-        if (storeSecondValue) {
-          calcuFunction(storeSecondValue);
-        } else {
-          calcuFunction(0);
-        }
+      if (storeSecondValue) {
+        calcuFunction(storeSecondValue);
+      } else {
+        calcuFunction(0);
+      }
       setResult(sum);
       setOperator(null);
       setStoreFirstValue(sum);
@@ -57,7 +55,6 @@ function Cal() {
         setStoreFirstValue(parseInt(inputValues.join('')));
       }
       setInputValues([]);
-
     } else {
       if (buttonArray.includes(value)) {
         setButtonId(null);
@@ -67,29 +64,33 @@ function Cal() {
         setResult(keys);
       }
     }
- 
-
   };
 
   const clearFunction = () => {
     setInputValues([]);
     setResult(0);
-  }
-   const deleteFunction=()=>{
-        console.log(typeof(result)); 
-        const deleteValue=result.toString().slice(0,-1);
-        const deleteValue1 =deleteValue.split(',');
-       setResult(deleteValue1);
-    //    setStoreFirstValue(result);
+  };
 
-       const oneDigitLess = deleteValue1.toString().concat(' ',inputValues).split(',');
-       setInputValues(oneDigitLess);
-   };
-   
+  const deleteFunction = () => {
+    if (result !== '') {
+      const deleteValue = result.toString().slice(0, -1);
+      const deleteValue1 = deleteValue.split(',');
+      if(deleteValue === '' ) {
+        setResult(0);
+      } else {
+        setResult(deleteValue);
+      }
+      setInputValues(deleteValue1);
+    } 
+    else {
+      setInputValues([0]);
+      setResult(0);
+    }
+  };
 
   return (
     <div className="layout">
-      <Input1 result={result}/>
+      <Input1 result={result} />
       {buttonArray.map((data) => (
         <Buttons
           key={data}
@@ -101,8 +102,11 @@ function Cal() {
       ))}
       {/* <div className='operator-container'> */}
       <Buttons
-        buttonType="button" name="=" classStyle="cal-button" 
-        func={() => sumData('=')}/>
+        buttonType="button"
+        name="="
+        classStyle="cal-button"
+        func={() => sumData('=')}
+      />
       {operatorArray.map((data, index) => (
         <Buttons
           key={index}
@@ -127,8 +131,7 @@ function Cal() {
         classStyle="cal-button"
         func={() => deleteFunction()}
       />
-
-      </div>
+    </div>
   );
-      }
-    export default Cal;
+}
+export default Cal;
