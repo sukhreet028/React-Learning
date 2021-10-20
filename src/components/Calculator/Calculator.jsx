@@ -1,17 +1,18 @@
 import './Cal.css';
 import Input1 from '../input1-com/Input1';
 import Buttons from '../buttons/buttons';
-import { useEffect, useState } from 'react';
+import {useEffect ,useState } from 'react';
 
 function Cal() {
   const [result, setResult] = useState(0);
   const [operator, setOperator] = useState();
   const buttonArray = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
-  const operatorArray = ['+', '-', '*', '/'];
+  const operatorArray = ['+', '-', '*', '/',];
   const [inputValues, setInputValues] = useState([]);
   const [storeFirstValue, setStoreFirstValue] = useState();
   const [buttonId, setButtonId] = useState(null);
   let sum;
+
 
   const calcuFunction = (secondValue) => {
     if (operator === '+') {
@@ -23,7 +24,7 @@ function Cal() {
     } else if (operator === '/') {
       sum = (storeFirstValue ? storeFirstValue : 0) / secondValue;
     } 
-  }
+}
 
   const sumData = (value, id) => {
 
@@ -73,7 +74,19 @@ function Cal() {
   const clearFunction = () => {
     setInputValues([]);
     setResult(0);
-  };
+  }
+   const deleteFunction=()=>{
+        console.log(typeof(result)); 
+        const deleteValue=result.toString().slice(0,-1);
+        const deleteValue1 =deleteValue.split(',');
+       setResult(deleteValue1);
+    //    setStoreFirstValue(result);
+    //    setOperator();
+
+    //    const oneDigitLess = deleteValue1.toString().concat(inputValues).split(',');
+       setInputValues(sum);
+   };
+   
 
   return (
     <div className="layout">
@@ -87,9 +100,10 @@ function Cal() {
           func={() => sumData(data)}
         />
       ))}
-      
+      {/* <div className='operator-container'> */}
       <Buttons
-        buttonType="button" name="=" classStyle="cal-button sum" func={() => sumData('=')}/>
+        buttonType="button" name="=" classStyle="cal-button" 
+        func={() => sumData('=')}/>
       {operatorArray.map((data, index) => (
         <Buttons
           key={index}
@@ -101,12 +115,20 @@ function Cal() {
           func={() => sumData(data, index)}
         />
       ))}
+      {/* </div> */}
       <Buttons
         buttonType="button"
         name="C"
-        classStyle="cal-button"
+        classStyle="cal-button clear"
         func={() => clearFunction()}
       />
+      <Buttons
+        buttonType="button"
+        name="CE"
+        classStyle="cal-button"
+        func={() => deleteFunction()}
+      />
+
       </div>
   );
       }

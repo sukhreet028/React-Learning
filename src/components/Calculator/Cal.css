@@ -41,30 +41,30 @@
     transform: scale(1.1);
     /* background-color: rgb(238, 227, 227); */
 }
-.sum{
+.cal-button1{
     grid-column: 4/5;
     grid-row: 2/3;
     /* background-color: aquamarine; */
 }
-.min{
+/* .cal-button1{
     grid-column: 4/5;
     grid-row: 3/4;
 }
-.mul{
+.cal-button1{
     grid-column: 4/5;
     grid-row: 4/5;
     padding-top: 14px;
 }
-.div{
+.cal-button1 .min{
     grid-column: 4/5;
     grid-row: 5/6;
-}
-/* .clear{
+} */
+.clear{
     grid-column: 1/5;
     grid-row: 6/7;
     font-size: 20px !important;
     width: 100px;
-} */
+}
 .clear{
 text-align:center;
 grid-column: 1/5;
@@ -75,26 +75,18 @@ border-radius: 13px;
 width: 360px;
 font-size: 20px !important;
 }
-.cal1-button{
-    background: rgb(7, 7, 7);
-    color:rgb(170, 41, 41);
-    border: none;
-    height: 55px;
-    width: 95px;
-    border-radius: 13px;
-    box-shadow: 2px 2px 0px 0px #c5c2c2;
-    text-align: center;
-}
-.input1Class{
-    text-align: right;
-    grid-column: 1/5;
-    border: none;
-    border: 1px solid gray;
-    height: 48px;
-    border-radius: 13px;
-    width: 390px;
-}
+/* .operator-container{
+display: flex;
 
-/* .cal-button{
-    font-size: 20px;
+justify-items: center;
+text-align: center;
+margin-top: 130px;
+}
+.operator{
+    background: rgb(196, 9, 9);
+    color:black;
+    border: none;
+    height: 55px; 
+     width: 95px;
+    
 } */
