@@ -29,14 +29,21 @@
     margin: auto;
     list-style: none;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: space-around;
     align-items: center;
 }
 
+.small-nav li {
+    background-color: rgb(205, 115, 115);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
 .small-nav li a{
     text-decoration: none;
-    color:rgb(88, 16, 16);
+    color:rgb(251, 247, 247);
     font-size: 15px;
 }
 .hello{

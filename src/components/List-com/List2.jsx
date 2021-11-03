@@ -1,4 +1,5 @@
-
+import './List.css'
+import { Link } from "react-router-dom";
 function List2(prop){
 const {myBar,classType}=prop
 return(
@@ -7,7 +8,7 @@ return(
             <ul className={classType}>
             {myBar.map((data,index)=>(
             <li key={index}>
-                <a href="#">{data}</a>
+                <Link to={data.path}>{data.name}</Link>
             </li>
             ))}
 
