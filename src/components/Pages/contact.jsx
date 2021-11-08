@@ -1,7 +1,6 @@
 import './contact.css';
 import { Link, useParams } from 'react-router-dom';
 import ContactProfile from './contact-info/contact-profile';
-import { useEffect, useState } from 'react';
 function Contact(props) {
   let parms = useParams()?.id;
 
