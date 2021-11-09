@@ -35,10 +35,7 @@
 }
 
 .small-nav li {
-    background-color: rgb(205, 115, 115);
     text-align: center;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
 }
 
 .small-nav li a{
@@ -77,4 +74,18 @@
     text-decoration: none;
     color:rgb(88, 16, 16);
     font-size: 15px;
+}
+
+.active {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.notActive {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: rgb(205, 115, 115);
 }

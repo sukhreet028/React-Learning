@@ -1,37 +1,30 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import BookInfo from "./BookInfo";
-import OneBook from "./OneBook";
+import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 
 const BookDisplay = (prop) => {
-  let parms = useParams()?.id;
-  let bookData;
+  const param = useParams()?.id;
+  const navigatePage = useNavigate();
 
-  if (parms) {
-    bookData = BookInfo.find((data) => data.id == parms);
+  const navigate = () => {
+    navigatePage('1');
   }
 
   return (
     <div>
       <h1> Book Information</h1>
-      {!parms &&
-        BookInfo.map((data, index) => (
+      {!param && BookInfo.map((data, index) => (
           <Link key={index} to={`/book/${data.id}`}>
             <div>
               <p>Book id: {data.id}</p>
-              <p>Book Name is: {data.name}</p>
+              <p>Book Name is: {data.Name}</p>
             </div>
           </Link>
         ))}
-      {parms && (
-        <OneBook
-          id={bookData.id}
-          name={bookData.name}
-          author={bookData.author}
-          price={bookData.price}
-          type={bookData.type}
-        />
-      )}
+        <Outlet />
+        <button onClick={navigate}>
+          back
+        </button>
     </div>
   );
 };

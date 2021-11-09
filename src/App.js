@@ -1,16 +1,17 @@
 import "./App.css";
 import Home from "./components/Pages/Home";
 import { Suspense } from "react";
-import { Route, Routes, Switch } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Contact from "./components/Pages/contact";
 import List from "./components/List-com/List2";
-import BookInfo from "./components/Book/BookInfo";
+import BookDisplay from "./components/Book/BookDisplay";
+import OneBook from "./components/Book/OneBook";
 import About from "./components/About-us/About";
 import Error from "./components/ErrorPage/Error";
 
 function App(props) {
   const myList = [
-    { name: "Home", path: "/" },
+    { name: "Home", path: "/home" },
     { name: "Contact us", path: "contact" },
     { name: "Book Info", path: "book" },
     { name: "About Us", path: "about" },
@@ -18,13 +19,15 @@ function App(props) {
   ];
   let routes = (
     <Routes>
-      {/* <Route exact path="/book" element={<BookInfo />}>
-        <Route path="/book/:id" element={<BookInfo />} />
-      </Route> */}
-      <Route path="/" element={<Home />} />
+      <Route path="/book" element={<BookDisplay />}>
+       <Route path=":id" element={<OneBook />} />
+      </Route>
+        {/* <Route path="/" element={<Navigate to="/home" />} /> */}
+      <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       {/* <Route element={<Error />} /> */}
-      <Route path="*" element={<Error />} />
+      {/* <Route path="*" element={<Error />} /> */}
+      <Route path="*" element={<Navigate to="/home" />} />
     </Routes>
   );
 
