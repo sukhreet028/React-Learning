@@ -1,0 +1,18 @@
+.chap-container{
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+}
+
+button {
+    padding: 0.5rem 2rem;
+    margin-bottom: 1rem;
+    background-color: bisque;
+    border-radius: 8px;
+    border: 1px solid white;
+}
+
+.disableButton {
+    background-color: gainsboro;
+    opacity: 0.5;
+}

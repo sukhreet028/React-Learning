@@ -7,6 +7,7 @@ import List from "./components/List-com/List2";
 import BookDisplay from "./components/Book/BookDisplay";
 import OneBook from "./components/Book/OneBook";
 import About from "./components/About-us/About";
+import Page  from './components/Book/page';
 import Error from "./components/ErrorPage/Error";
 
 function App(props) {
@@ -20,7 +21,9 @@ function App(props) {
   let routes = (
     <Routes>
       <Route path="/book" element={<BookDisplay />}>
-       <Route path=":id" element={<OneBook />} />
+       <Route path=":id" element={<OneBook />} >
+         <Route path=":title" element={<Page />} />
+       </Route>
       </Route>
         {/* <Route path="/" element={<Navigate to="/home" />} /> */}
       <Route path="/home" element={<Home />} />

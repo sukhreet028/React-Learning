@@ -5,11 +5,6 @@ import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 const BookDisplay = (prop) => {
   const param = useParams()?.id;
   const navigatePage = useNavigate();
-
-  const navigate = () => {
-    navigatePage('1');
-  }
-
   return (
     <div>
       <h1> Book Information</h1>
@@ -22,8 +17,11 @@ const BookDisplay = (prop) => {
           </Link>
         ))}
         <Outlet />
-        <button onClick={navigate}>
+        <button onClick={()=>navigatePage(-1)}>
           back
+        </button>
+        <button onClick={()=>navigatePage(+1)}>
+          next
         </button>
     </div>
   );
