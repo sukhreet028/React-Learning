@@ -8,6 +8,7 @@ import BookDisplay from "./components/Book/BookDisplay";
 import OneBook from "./components/Book/OneBook";
 import About from "./components/About-us/About";
 import Page  from './components/Book/page';
+import Profile from "./components/Profile/Profile";
 import Error from "./components/ErrorPage/Error";
 
 function App(props) {
@@ -16,7 +17,7 @@ function App(props) {
     { name: "Contact us", path: "contact" },
     { name: "Book Info", path: "book" },
     { name: "About Us", path: "about" },
-    { name: "Blog", path: "blog" },
+    { name: "Profile", path: "profile" },
   ];
   let routes = (
     <Routes>
@@ -27,6 +28,7 @@ function App(props) {
       </Route>
         {/* <Route path="/" element={<Navigate to="/home" />} /> */}
       <Route path="/home" element={<Home />} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="/about" element={<About />} />
       {/* <Route element={<Error />} /> */}
       {/* <Route path="*" element={<Error />} /> */}

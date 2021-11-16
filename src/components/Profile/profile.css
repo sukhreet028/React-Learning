@@ -1,0 +1,13 @@
+.userinfo-container {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
